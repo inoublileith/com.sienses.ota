@@ -83,6 +83,7 @@ Explore the various screens in COM_SINSES_OTA to understand how the app works an
 
 <img src="https://github.com/inoublileith/com.sienses.ota/assets/126243938/e7d8e643-5c04-44bd-a861-055aa05ad059" width="200" height="400">
 <img src="https://github.com/inoublileith/com.sienses.ota/assets/126243938/effe2d41-b7f2-4512-a8e6-3404c54c30d3" width="200" height="400">
+<img src="https://github.com/inoublileith/com.sienses.ota/assets/126243938/effe2d41-b7f2-4512-a8e6-3404c54c30d3" width="200" height="400">
 <img src="https://github.com/inoublileith/com.sienses.ota/assets/126243938/94ebf12c-2819-4236-a9ad-7ffe67d5bcdf" width="200" height="400">
 <img src="https://github.com/inoublileith/com.sienses.ota/assets/126243938/345c8205-94c3-4ce0-8175-5f3802ab3dbf" width="200" height="400">
 
@@ -95,11 +96,14 @@ Explore the various screens in COM_SINSES_OTA to understand how the app works an
 
 ### User Scanning Screen
 
+
 <img src="https://github.com/inoublileith/com.sienses.ota/assets/126243938/243b54dd-80a6-4062-94d1-e7a22c1838c0" width="200" height="400">
+<img src="https://github.com/inoublileith/com.sienses.ota/assets/126243938/759d84ed-fbcd-47c8-9435-f81840044a2f" width="200" height="400">
 <img src="https://github.com/inoublileith/com.sienses.ota/assets/126243938/83bbfd65-59e1-4236-8c74-3ef945922b4e" width="200" height="400">
 <img src="https://github.com/inoublileith/com.sienses.ota/assets/126243938/7a2f5718-3567-4cc3-8528-2fbecf3c90ce" width="200" height="400">
 <img src="https://github.com/inoublileith/com.sienses.ota/assets/126243938/cd411e34-77e3-4715-923a-7829edb6a4c7" width="200" height="400">
 <img src="https://github.com/inoublileith/com.sienses.ota/assets/126243938/2b2827c0-eaa4-4181-adbf-8f2a0c1ee024" width="200" height="400">
+
 
 - **Function**: Where users initiate BLE device scanning.
 - **Features**: Allows users to scan devices and view related firmware files.

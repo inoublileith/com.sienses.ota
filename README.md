@@ -32,7 +32,7 @@ Explore the various screens in COM_SINSES_OTA to understand how the app works an
 
 ### User Dashboard
 
-![User Dashboard](images/user_dashboard.png)
+![82908b96-f318-4781-99b0-e09bbf789202](https://github.com/inoublileith/com.sienses.ota/assets/126243938/c19571de-7a57-4ed3-923b-46b812ad09f0)
 
 - **Function**: Provides users with a straightforward interface for managing profiles and scanning BLE devices.
 - **Features**: Users can update their profiles and initiate BLE device scanning from this screen.
@@ -41,7 +41,7 @@ Explore the various screens in COM_SINSES_OTA to understand how the app works an
 
 ### Superadmin Dashboard
 
-![Superadmin Dashboard](images/superadmin_dashboard.png)
+![8e6274be-6826-424f-a73f-953c10e80646](https://github.com/inoublileith/com.sienses.ota/assets/126243938/67215f2f-dc28-4bd2-ad18-345c80d18e95)
 
 - **Function**: A comprehensive control center for superadmins.
 - **Features**: Provides an overview of user management, device management, and firmware files. Superadmins can efficiently modify, delete, and oversee user profiles, BLE devices, and firmware files.
@@ -50,7 +50,8 @@ Explore the various screens in COM_SINSES_OTA to understand how the app works an
 
 ### Admin Dashboard
 
-![Admin Dashboard](images/admin_dashboard.png)
+![362d4e24-c419-4259-b06c-c428524568bc (1)](https://github.com/inoublileith/com.sienses.ota/assets/126243938/805964e8-767d-41d0-8659-1f0f3945f692)
+
 
 - **Function**: Focuses on device management and firmware files.
 - **Features**: Admins can manage BLE devices and handle firmware files with ease.

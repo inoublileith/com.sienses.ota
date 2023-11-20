@@ -1,6 +1,10 @@
 
+<<<<<<< HEAD
 
 import 'package:OTA/constant.dart';
+=======
+import 'package:com_sinses_ota/constant.dart';
+>>>>>>> origin/main
 import 'package:flutter/material.dart';
 
 class _ExpandedTrailingActions extends StatelessWidget {

@@ -1,8 +1,14 @@
 
+<<<<<<< HEAD
 
 import 'package:OTA/screens/components/BarTransition.dart';
 import 'package:OTA/screens/components/NavigationDrawer/NavigationDrawer_Screen.dart';
 import 'package:OTA/screens/components/RailTransition.dart';
+=======
+import 'package:com_sinses_ota/screens/components/BarTransition.dart';
+import 'package:com_sinses_ota/screens/components/NavigationDrawer/NavigationDrawer_Screen.dart';
+import 'package:com_sinses_ota/screens/components/RailTransition.dart';
+>>>>>>> origin/main
 import 'package:flutter/material.dart';
 
 class NavigationTransition extends StatefulWidget {

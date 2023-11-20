@@ -1,19 +1,34 @@
+<<<<<<< HEAD
 import 'package:OTA/screens/homeScreen.dart';
 import 'package:OTA/services/DbService.dart';
 import 'package:OTA/utilis/utilis.dart';
+=======
+
+
+
+import 'package:com_sinses_ota/services/DbService.dart';
+import 'package:com_sinses_ota/utilis/utilis.dart';
+>>>>>>> origin/main
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:local_auth/local_auth.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 class AuthService extends ChangeNotifier {
+<<<<<<< HEAD
+=======
+  
+>>>>>>> origin/main
   final SupabaseClient _supabase = Supabase.instance.client;
   final DbService _dbService = DbService();
 
   bool _isLoading = false;
 
   bool get isLoading => _isLoading;
+<<<<<<< HEAD
   bool block = false ; 
+=======
+>>>>>>> origin/main
 
   set setIsLoading(bool value) {
     _isLoading = value;
@@ -27,10 +42,15 @@ class AuthService extends ChangeNotifier {
       if (email == "" || password == "") {
         throw ("All Fields are required");
       }
+<<<<<<< HEAD
       final AuthResponse response = await _supabase.auth.signUp(
         email: email,
         password: password,
       );
+=======
+      final AuthResponse response =
+          await _supabase.auth.signUp(email: email, password: password,);
+>>>>>>> origin/main
       if (response != null) {
         await _dbService.insertNewUser(email, name, response.user!.id);
 
@@ -41,7 +61,11 @@ class AuthService extends ChangeNotifier {
       }
     } catch (e) {
       setIsLoading = false;
+<<<<<<< HEAD
       Utils.showSnackBar('User Already Registred ', context, color: Colors.red);
+=======
+      Utils.showSnackBar(e.toString(), context, color: Colors.red);
+>>>>>>> origin/main
     }
   }
 
@@ -57,8 +81,12 @@ class AuthService extends ChangeNotifier {
       setIsLoading = false;
     } catch (e) {
       setIsLoading = false;
+<<<<<<< HEAD
       Utils.showSnackBar("Invalid Login Or Password ", context,
           color: Colors.red);
+=======
+      Utils.showSnackBar(e.toString(), context, color: Colors.red);
+>>>>>>> origin/main
       print(e.toString());
     }
   }
@@ -102,4 +130,8 @@ class AuthService extends ChangeNotifier {
   }
 
   User? get currentUser => _supabase.auth.currentUser;
+<<<<<<< HEAD
+=======
+  
+>>>>>>> origin/main
 }

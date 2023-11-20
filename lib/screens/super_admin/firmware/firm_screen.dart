@@ -1,8 +1,15 @@
+<<<<<<< HEAD
 import 'package:OTA/screens/super_admin/firmware/Edit_Firm.dart';
 import 'package:OTA/screens/super_admin/firmware/addFile.dart';
 import 'package:OTA/screens/super_admin/firmware/addNewFile.dart';
 import 'package:OTA/services/DbService.dart';
 
+=======
+import 'package:com_sinses_ota/screens/super_admin/firmware/Edit_Firm.dart';
+import 'package:com_sinses_ota/screens/super_admin/firmware/addNewFile.dart';
+import 'package:com_sinses_ota/screens/super_admin/user/Edit_User.dart';
+import 'package:com_sinses_ota/services/DbService.dart';
+>>>>>>> origin/main
 
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -64,15 +71,28 @@ class _FirmScreenState extends State<FirmScreen> {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
+<<<<<<< HEAD
                       builder: (context) => AddFirm(),
                     ),
                   ).then((refresh) {
                     if (refresh == true) {
+=======
+                      builder: (context) => UploadScreen(),
+                    ),
+                  ).then((refresh) {
+                    if (refresh == true) {
+                      // Reload the list of firmware (you can do this by fetching data again or using some other method)
+                      // You can call a function to fetch updated data here or use a state management approach to refresh the list.
+                      // For example, if you are using Provider, you can notify your Provider to rebuild.
+>>>>>>> origin/main
                       Provider.of<DbService>(context, listen: false)
                           .fetchFirmes();
                     }
                   });
+<<<<<<< HEAD
                   // dbService.isDeviceInCloud("12:21:12:12");
+=======
+>>>>>>> origin/main
                 },
                 child: Text('ADD'),
               ),
@@ -110,7 +130,11 @@ class _FirmScreenState extends State<FirmScreen> {
                                   ),
                                 ),
                                 child: const Icon(
+<<<<<<< HEAD
                                  Icons.blur_on,
+=======
+                                    Icons.computer,
+>>>>>>> origin/main
                                     color: Colors.white),
                               ),
                               title: Text(

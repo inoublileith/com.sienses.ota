@@ -1,11 +1,26 @@
+<<<<<<< HEAD
 import 'package:OTA/screens/super_admin/user/Edit_User.dart';
 import 'package:OTA/services/DbService.dart';
+=======
+import 'package:com_sinses_ota/screens/super_admin/user/Edit_User.dart';
+import 'package:com_sinses_ota/screens/super_admin/user/showDilaog.dart';
+import 'package:com_sinses_ota/services/DbService.dart';
+>>>>>>> origin/main
 
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+<<<<<<< HEAD
 const Widget divider = SizedBox(height: 10);
 
+=======
+
+const Widget divider = SizedBox(height: 10);
+
+// If screen content width is greater or equal to this value, the light and dark
+// color schemes will be displayed in a column. Otherwise, they will
+// be displayed in a row.
+>>>>>>> origin/main
 const double narrowScreenWidthThreshold = 100;
 
 class UserScreen extends StatefulWidget {
@@ -19,6 +34,10 @@ class _UserScreenState extends State<UserScreen> {
   @override
   void initState() {
     super.initState();
+<<<<<<< HEAD
+=======
+    // Call the function to fetch employee data from the database when the screen is initialized
+>>>>>>> origin/main
     Provider.of<DbService>(context, listen: false).fetchEmployees();
   }
 
@@ -55,6 +74,12 @@ class _UserScreenState extends State<UserScreen> {
               Expanded(
                 child: Consumer<DbService>(
                   builder: (context, dbService, child) {
+<<<<<<< HEAD
+=======
+                    // Check if the data has been fetched and loaded
+
+                    // Data has been successfully fetched
+>>>>>>> origin/main
                     final employeeList = dbService.allUsers;
 
                     return ListView.builder(
@@ -63,6 +88,7 @@ class _UserScreenState extends State<UserScreen> {
                       itemCount: employeeList.length,
                       itemBuilder: (context, index) {
                         final employee = employeeList[index];
+<<<<<<< HEAD
                         late String newadmin;
                         if (employee.role == "1") {
                           newadmin = "Super Admin";
@@ -72,6 +98,8 @@ class _UserScreenState extends State<UserScreen> {
                           newadmin = "User";
                         }
 
+=======
+>>>>>>> origin/main
                         return Card(
                           elevation: 8.2,
                           margin: const EdgeInsets.symmetric(
@@ -96,19 +124,32 @@ class _UserScreenState extends State<UserScreen> {
                                     color: Colors.white),
                               ),
                               title: Text(
+<<<<<<< HEAD
                                 employee.name,
+=======
+                                employee
+                                    .name, // Use employee name from your data
+>>>>>>> origin/main
                                 style: TextStyle(
                                     color: Colors.white,
                                     fontWeight: FontWeight.bold),
                               ),
+<<<<<<< HEAD
                               subtitle: Row(
+=======
+                              subtitle: const Row(
+>>>>>>> origin/main
                                 children: [
                                   Expanded(
                                     flex: 4,
                                     child: Padding(
                                       padding: EdgeInsets.only(left: 10.0),
                                       child: Text(
+<<<<<<< HEAD
                                         newadmin,
+=======
+                                        "employee",
+>>>>>>> origin/main
                                         style: TextStyle(color: Colors.white),
                                       ),
                                     ),
@@ -118,6 +159,7 @@ class _UserScreenState extends State<UserScreen> {
                               trailing: const Icon(Icons.keyboard_arrow_right,
                                   color: Colors.white, size: 30.0),
                               onTap: () {
+<<<<<<< HEAD
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(
@@ -126,6 +168,18 @@ class _UserScreenState extends State<UserScreen> {
                                   ),
                                 ).then((refresh) {
                                   if (refresh == true) {
+=======
+                                 Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => DetailPage(employee: employee,),
+                                  ),
+                                ).then((refresh) {
+                                  if (refresh == true) {
+                                    // Reload the list of firmware (you can do this by fetching data again or using some other method)
+                                    // You can call a function to fetch updated data here or use a state management approach to refresh the list.
+                                    // For example, if you are using Provider, you can notify your Provider to rebuild.
+>>>>>>> origin/main
                                     Provider.of<DbService>(context,
                                             listen: false)
                                         .fetchEmployees();

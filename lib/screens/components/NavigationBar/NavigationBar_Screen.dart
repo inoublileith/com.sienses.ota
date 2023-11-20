@@ -1,6 +1,11 @@
+<<<<<<< HEAD
 import 'package:OTA/screens/components/NavigationBar/ComponentDec_Screen.dart';
 import 'package:OTA/screens/homeScreen.dart';
 
+=======
+import 'package:com_sinses_ota/screens/components/NavigationBar/ComponentDec_Screen.dart';
+import 'package:com_sinses_ota/screens/homeScreen.dart';
+>>>>>>> origin/main
 
 import 'package:flutter/material.dart';
 

@@ -1,7 +1,11 @@
 import 'dart:math';
 
+<<<<<<< HEAD
 
 import 'package:OTA/utilis/theme.dart';
+=======
+import 'package:com_sinses_ota/utilis/theme.dart';
+>>>>>>> origin/main
 import 'package:flutter/material.dart';
 
 

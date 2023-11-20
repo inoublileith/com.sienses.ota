@@ -1,5 +1,9 @@
 
+<<<<<<< HEAD
 import 'package:OTA/screens/components/constant.dart';
+=======
+import 'package:com_sinses_ota/screens/components/constant.dart';
+>>>>>>> origin/main
 import 'package:flutter/material.dart';
 
 class RailTransition extends StatefulWidget {

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import 'package:OTA/constant.dart';
 import 'package:OTA/screens/Ble/screens/bluetooth_off_screen.dart';
 import 'package:OTA/screens/Ble/screens/scan_screen.dart';
@@ -17,6 +18,37 @@ import 'package:flutter/material.dart';
 import 'package:flutter_blue_plus/flutter_blue_plus.dart';
 
 class Home extends StatefulWidget {
+=======
+import 'package:com_sinses_ota/constant.dart';
+import 'package:com_sinses_ota/screens/admin/device/Admin_Device.dart';
+import 'package:com_sinses_ota/screens/admin/firmware/Admin_Fire.dart';
+
+
+
+import 'package:com_sinses_ota/screens/components/NavigationBar/NavigationBar_Screen.dart';
+import 'package:com_sinses_ota/screens/components/NavigationBar/constant.dart';
+import 'package:com_sinses_ota/screens/components/NavigationTransition.dart';
+import 'package:com_sinses_ota/screens/super_admin/device/device_screen.dart';
+import 'package:com_sinses_ota/screens/super_admin/firmware/firm_screen.dart';
+import 'package:com_sinses_ota/screens/super_admin/user/users_screen.dart';
+import 'package:com_sinses_ota/screens/test.dart';
+import 'package:com_sinses_ota/screens/user/bluetooth_off_screen.dart';
+import 'package:com_sinses_ota/screens/user/profile_screen.dart';
+import 'package:com_sinses_ota/screens/user/scan_screen.dart';
+
+
+
+import 'package:com_sinses_ota/services/DbService.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_blue_plus/flutter_blue_plus.dart';
+
+
+class Home extends StatefulWidget {
+
+
+
+
+>>>>>>> origin/main
   const Home({
     super.key,
     required this.useLightMode,
@@ -48,7 +80,12 @@ class Home extends StatefulWidget {
 DbService dbService = DbService();
 
 Future<String> isAdmin() async {
+<<<<<<< HEAD
   String admin = await dbService.checkAdminStatus();
+=======
+  String admin = await dbService
+      .checkAdminStatus();// Assuming '1' means admin and '2' means non-admin
+>>>>>>> origin/main
   return admin;
 }
 
@@ -61,7 +98,12 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
   bool showLargeSizeLayout = false;
 
   int screenIndex = ScreenSelected.component.value;
+<<<<<<< HEAD
   late Future<String> admin;
+=======
+ late Future<String> admin ; // Default admin status, nullable
+ // Default admin status
+>>>>>>> origin/main
 
   @override
   void initState() {
@@ -76,9 +118,17 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
       curve: const Interval(0.5, 1.0),
     );
 
+<<<<<<< HEAD
     admin = isAdmin();
   }
 
+=======
+admin = isAdmin();
+  }
+
+
+
+>>>>>>> origin/main
   @override
   void dispose() {
     controller.dispose();
@@ -91,12 +141,20 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
     });
   }
 
+<<<<<<< HEAD
   Widget createScreenFor(
+=======
+Widget createScreenFor(
+>>>>>>> origin/main
     ScreenSelected screenSelected,
     bool showNavBarExample,
     String admin,
   ) {
+<<<<<<< HEAD
     int valueadmin = int.parse(admin);
+=======
+    int valueadmin = int.parse(admin );
+>>>>>>> origin/main
 
     if (valueadmin == 1) {
       switch (screenSelected) {
@@ -119,7 +177,11 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
     } else if (valueadmin == 3) {
       switch (screenSelected) {
         case ScreenSelected.component:
+<<<<<<< HEAD
           return const Expanded(child: ProfileScreen());
+=======
+          return const ProfileScreen();
+>>>>>>> origin/main
         case ScreenSelected.users:
           return Expanded(
             child: StreamBuilder<BluetoothAdapterState>(
@@ -128,7 +190,11 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
               builder: (c, snapshot) {
                 final adapterState = snapshot.data;
                 if (adapterState == BluetoothAdapterState.on) {
+<<<<<<< HEAD
                   return const ScanScreen();
+=======
+                  return const FindDevicesScreen();
+>>>>>>> origin/main
                 } else {
                   FlutterBluePlus.stopScan();
                   return BluetoothOffScreen(adapterState: adapterState);
@@ -138,11 +204,17 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
           );
         case ScreenSelected.typography:
           return const Expanded(
+<<<<<<< HEAD
             child: ProfileScreen(),
           );
       }
     } else if (valueadmin == 0) {
       return const MyButtonScreen();
+=======
+            child:  ProfileScreen(),
+          );
+      }
+>>>>>>> origin/main
     } else {
       return const MyButtonScreen();
     }
@@ -151,18 +223,29 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
   PreferredSizeWidget createAppBar() {
     return AppBar(
       title: Image.asset(
+<<<<<<< HEAD
         'assets/logoOTA.png',
         width: 60,
         height: 55,
+=======
+        'assets/logo.jpg',
+        width: 60,
+        height: 60,
+>>>>>>> origin/main
       ),
     );
   }
 
+<<<<<<< HEAD
   @override
+=======
+    @override
+>>>>>>> origin/main
   Widget build(BuildContext context) {
     return FutureBuilder<String>(
       future: admin,
       builder: (context, snapshot) {
+<<<<<<< HEAD
         if (snapshot.connectionState == ConnectionState.waiting) {
           return Center(
             child: Image.asset(
@@ -173,6 +256,14 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
           );
         } else if (snapshot.hasError || snapshot.data == null) {
           return Text('Error loading admin data');
+=======
+          if (snapshot.connectionState == ConnectionState.waiting) {
+          return const Center(
+            child: CircularProgressIndicator()
+          ); // Loading indicator
+        } else if (snapshot.hasError || snapshot.data == null) {
+          return Text('Error loading admin data'); // Error message or handling
+>>>>>>> origin/main
         }
         final adminValue = snapshot.data!;
         return AnimatedBuilder(
@@ -223,6 +314,11 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
   }
 }
 
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> origin/main
 final List<NavigationRailDestination> navRailDestinations = appBarDestinations
     .map(
       (destination) => NavigationRailDestination(
@@ -239,6 +335,10 @@ final List<NavigationRailDestination> navRailDestinations = appBarDestinations
     )
     .toList();
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> origin/main
 class _ExpandedTrailingActions extends StatelessWidget {
   const _ExpandedTrailingActions({
     required this.useLightMode,

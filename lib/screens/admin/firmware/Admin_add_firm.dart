@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:file_picker/file_picker.dart';
+<<<<<<< HEAD
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 class AdminUploadScreen extends StatefulWidget {
@@ -21,6 +22,17 @@ class _AdminUploadScreenState extends State<AdminUploadScreen> {
     super.initState();
   }
 
+=======
+import 'package:supabase/supabase.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
+
+class AdminUploadScreen extends StatefulWidget {
+  @override
+  _AdminUploadScreen createState() => _AdminUploadScreen();
+}
+
+class _AdminUploadScreen extends State<AdminUploadScreen> {
+>>>>>>> origin/main
   final SupabaseClient supabase = Supabase.instance.client;
 
   TextEditingController versionController = TextEditingController();
@@ -49,10 +61,17 @@ class _AdminUploadScreenState extends State<AdminUploadScreen> {
     final metadata = {
       'version': versionController.text,
       'Tag': tagController.text,
+<<<<<<< HEAD
       'file_path': selectedFilePath,
       'Id_user': widget.userId
     };
 
+=======
+      'file_path': selectedFilePath, // Store the file path in the table
+    };
+
+    // Store the metadata in your Supabase table (replace 'your-table-name').
+>>>>>>> origin/main
     final result = await supabase.from('Firmware').upsert([metadata]);
 
     if (result != null && result.error == null) {
@@ -71,6 +90,7 @@ class _AdminUploadScreenState extends State<AdminUploadScreen> {
 
   @override
   Widget build(BuildContext context) {
+<<<<<<< HEAD
     Brightness brightness = MediaQuery.of(context).platformBrightness;
     bool isDarkMode = brightness == Brightness.dark;
     return Scaffold(
@@ -226,3 +246,50 @@ Widget buildTextField(String labelText, TextEditingController controller,
                 color: Colors.grey))),
   );
 }
+=======
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Data and File Upload'),
+        leading: IconButton(
+          icon: Icon(
+            Icons.arrow_back,
+            color: Colors.black,
+          ),
+          onPressed: () {
+            Navigator.pop(context, true);
+          },
+        ),
+      ),
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          children: [
+            TextField(
+              controller: versionController,
+              decoration: InputDecoration(labelText: 'Version'),
+            ),
+            TextField(
+              controller: tagController,
+              decoration: InputDecoration(labelText: 'Tag'),
+            ),
+            ElevatedButton(
+              onPressed: pickFile,
+              child: Text('Choose a File'),
+            ),
+            if (selectedFilePath != null)
+              Text('Selected File: $selectedFilePath'),
+            ElevatedButton(
+              onPressed: () {
+                saveDataAndFilePath().then((_) {
+                  Navigator.pop(context, true); // Pass a signal for refresh
+                });
+              },
+              child: Text('Save Data and File Path'),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+>>>>>>> origin/main

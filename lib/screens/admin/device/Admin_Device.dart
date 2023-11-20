@@ -1,12 +1,32 @@
+<<<<<<< HEAD
 import 'package:OTA/screens/admin/device/Edit_Admin_Device.dart';
 import 'package:OTA/services/DbService.dart';
+=======
+import 'package:com_sinses_ota/models/device_model.dart';
+import 'package:com_sinses_ota/models/users_model.dart';
+import 'package:com_sinses_ota/screens/admin/device/Edit_Admin_Device.dart';
+import 'package:com_sinses_ota/screens/homeScreen.dart';
+import 'package:com_sinses_ota/screens/super_admin/user/Edit_User.dart';
+import 'package:com_sinses_ota/screens/super_admin/device/edit_device.dart';
+import 'package:com_sinses_ota/services/DbService.dart';
+
+>>>>>>> origin/main
 import 'package:flutter/material.dart';
 import 'package:flutter_blue_plus/flutter_blue_plus.dart';
 import 'package:provider/provider.dart';
 
+<<<<<<< HEAD
 const double narrowScreenWidthThreshold = 100;
 
 // ... (your existing imports)
+=======
+const Widget divider = SizedBox(height: 10);
+
+// If screen content width is greater or equal to this value, the light and dark
+// color schemes will be displayed in a column. Otherwise, they will
+// be displayed in a row.
+const double narrowScreenWidthThreshold = 100;
+>>>>>>> origin/main
 
 class AdminDeviceScreen extends StatefulWidget {
   const AdminDeviceScreen({Key? key}) : super(key: key);
@@ -17,22 +37,37 @@ class AdminDeviceScreen extends StatefulWidget {
 
 class _AdminDeviceScreenState extends State<AdminDeviceScreen> {
   final TextEditingController tagController = TextEditingController();
+<<<<<<< HEAD
   String? tagValue;
   bool isFilterActive = false;
 
   List<String> selectedDeviceIds = []; // Store selected device IDs
+=======
+  List<DeviceModel> filteredDeviceList = [];
+  List<UtilisateurModel> ListUsers = []; // Initialize a filtered list
+  String? tagValue;
+>>>>>>> origin/main
 
   @override
   void initState() {
     super.initState();
+<<<<<<< HEAD
     final dbService = Provider.of<DbService>(context, listen: false);
     dbService.fetchDevices(); // Fetch all devices when the screen initializes.
+=======
+    // Call the function to fetch device data from the database when the screen is initialized
+    Provider.of<DbService>(context, listen: false).fetchDevices();
+    Provider.of<DbService>(context, listen: false).fetchEmployees();
+>>>>>>> origin/main
   }
 
   @override
   Widget build(BuildContext context) {
+<<<<<<< HEAD
     final dbService = Provider.of<DbService>(context);
 
+=======
+>>>>>>> origin/main
     return Expanded(
       child: LayoutBuilder(
         builder: (context, constraints) {
@@ -66,6 +101,7 @@ class _AdminDeviceScreenState extends State<AdminDeviceScreen> {
                 Row(
                   children: [
                     Expanded(
+<<<<<<< HEAD
                       child: Container(
                         padding: EdgeInsets.symmetric(horizontal: 16),
                         decoration: BoxDecoration(
@@ -234,12 +270,33 @@ class _AdminDeviceScreenState extends State<AdminDeviceScreen> {
                         }
                       },
                       child: const Text('Add Firms'),
+=======
+                      child: TextField(
+                        controller: tagController,
+                        decoration: InputDecoration(
+                          labelText: 'Tag',
+                          hintText: 'Enter a tag',
+                        ),
+                      ),
+                    ),
+                    SizedBox(width: 8),
+                    ElevatedButton(
+                      onPressed: () {
+                        setState(() {
+                          tagValue = tagController.text;
+                          dbService.fetchDevicesByTag(
+                              tagValue!); // Call the filter function when the button is pressed
+                        });
+                      },
+                      child: const Icon(Icons.search, color: Colors.blue),
+>>>>>>> origin/main
                     ),
                   ],
                 ),
                 Expanded(
                   child: Consumer<DbService>(
                     builder: (context, dbService, child) {
+<<<<<<< HEAD
                       final deviceList = isFilterActive
                           ? dbService.allDevices
                               .where((device) => device.tag
@@ -248,6 +305,17 @@ class _AdminDeviceScreenState extends State<AdminDeviceScreen> {
                               .toList()
                           : dbService.allDevices;
 
+=======
+                      final deviceList =
+                          tagValue != null && tagValue!.isNotEmpty
+                              ? dbService.allDevices
+                                  .where((device) => device.tag
+                                      .toLowerCase()
+                                      .contains(tagValue!.toLowerCase()))
+                                  .toList()
+                              : dbService.allDevices;
+                      final ListUsers = dbService.allUsers;
+>>>>>>> origin/main
                       return ListView.builder(
                         scrollDirection: Axis.vertical,
                         shrinkWrap: true,
@@ -305,6 +373,7 @@ class _AdminDeviceScreenState extends State<AdminDeviceScreen> {
                                     ),
                                   ],
                                 ),
+<<<<<<< HEAD
                                 trailing: IconButton(
                                   icon: device.isSelected
                                       ? Icon(Icons.check_box)
@@ -320,6 +389,12 @@ class _AdminDeviceScreenState extends State<AdminDeviceScreen> {
                                       }
                                     });
                                   },
+=======
+                                trailing: const Icon(
+                                  Icons.keyboard_arrow_right,
+                                  color: Colors.white,
+                                  size: 30.0,
+>>>>>>> origin/main
                                 ),
                                 onTap: () {
                                   Navigator.push(
@@ -330,6 +405,12 @@ class _AdminDeviceScreenState extends State<AdminDeviceScreen> {
                                     ),
                                   ).then((refresh) {
                                     if (refresh == true) {
+<<<<<<< HEAD
+=======
+                                      // Reload the list of firmware (you can do this by fetching data again or using some other method)
+                                      // You can call a function to fetch updated data here or use a state management approach to refresh the list.
+                                      // For example, if you are using Provider, you can notify your Provider to rebuild.
+>>>>>>> origin/main
                                       Provider.of<DbService>(context,
                                               listen: false)
                                           .fetchDevices();
@@ -343,7 +424,11 @@ class _AdminDeviceScreenState extends State<AdminDeviceScreen> {
                       );
                     },
                   ),
+<<<<<<< HEAD
                 ),
+=======
+                )
+>>>>>>> origin/main
               ],
             );
           }

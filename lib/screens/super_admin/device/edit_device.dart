@@ -1,7 +1,15 @@
+<<<<<<< HEAD
 import 'package:OTA/models/device_model.dart';
 import 'package:OTA/models/users_model.dart';
 import 'package:OTA/services/DbService.dart';
 
+=======
+import 'package:com_sinses_ota/models/device_model.dart';
+import 'package:com_sinses_ota/models/firm_model.dart';
+import 'package:com_sinses_ota/models/users_model.dart';
+import 'package:com_sinses_ota/screens/super_admin/user/users_screen.dart';
+import 'package:com_sinses_ota/services/DbService.dart';
+>>>>>>> origin/main
 import 'package:dropdown_button2/dropdown_button2.dart';
 
 import 'package:flutter/material.dart';
@@ -11,9 +19,13 @@ import 'package:provider/provider.dart';
 class EditDevice extends StatefulWidget {
   final DeviceModel employee;
 
+<<<<<<< HEAD
   const EditDevice({
     required this.employee,
   });
+=======
+  const EditDevice({required this.employee,});
+>>>>>>> origin/main
 
   @override
   _EditDeviceState createState() => _EditDeviceState();
@@ -23,16 +35,26 @@ class _EditDeviceState extends State<EditDevice> {
   bool isObscurePassword = true;
   TextEditingController MacController = TextEditingController();
   TextEditingController TagController = TextEditingController();
+<<<<<<< HEAD
   String selectedUser = '';
   List<UtilisateurModel> ListUsers = [];
+=======
+     String selectedUser = '';
+       List<UtilisateurModel> ListUsers = []; 
+>>>>>>> origin/main
   List<String> userNames = [];
 // Define a list of tag options
 
   @override
   void initState() {
     super.initState();
+<<<<<<< HEAD
     Provider.of<DbService>(context, listen: false).fetchEmployees();
     // Extract user names from the list of users
+=======
+        Provider.of<DbService>(context, listen: false).fetchEmployees();
+       // Extract user names from the list of users
+>>>>>>> origin/main
     userNames = ListUsers.map((user) => user.name).toList();
 
     // Set the initial value of the dropdown to the device's user
@@ -42,12 +64,18 @@ class _EditDeviceState extends State<EditDevice> {
   @override
   Widget build(BuildContext context) {
     final dbService = Provider.of<DbService>(context);
+<<<<<<< HEAD
 
     final tag = widget.employee.tag;
     final id = widget.employee.id;
     TagController.text = tag;
        Brightness brightness = MediaQuery.of(context).platformBrightness;
     bool isDarkMode = brightness == Brightness.dark;
+=======
+    final mac = widget.employee.mac;
+    final tag = widget.employee.tag;
+    final id = widget.employee.id;
+>>>>>>> origin/main
 
     // Using below conditions because build can be called multiple times
     dbService.allUsers.isEmpty ? dbService.getAllusers() : null;
@@ -55,6 +83,7 @@ class _EditDeviceState extends State<EditDevice> {
         appBar: AppBar(
           title: Text('Edit Device BLE'),
           leading: IconButton(
+<<<<<<< HEAD
             icon:isDarkMode? Icon(
               Icons.arrow_back,
               color: Colors.white,
@@ -63,6 +92,17 @@ class _EditDeviceState extends State<EditDevice> {
               Navigator.pop(context, true);
             },
           ),
+=======
+            icon: Icon(
+              Icons.arrow_back,
+              color: Colors.black,
+            ),
+            onPressed: () {
+              Navigator.pop(context,true);
+            },
+          ),
+          
+>>>>>>> origin/main
         ),
         body: Container(
           padding: EdgeInsets.only(left: 15, top: 20, right: 15),
@@ -79,6 +119,7 @@ class _EditDeviceState extends State<EditDevice> {
                         width: 130,
                         height: 130,
                         decoration: BoxDecoration(
+<<<<<<< HEAD
                           border: Border.all(width: 4, color: Colors.white),
                           boxShadow: [
                             BoxShadow(
@@ -116,10 +157,42 @@ class _EditDeviceState extends State<EditDevice> {
                       //     ),
                       //   ),
                       // ),
+=======
+                            border: Border.all(width: 4, color: Colors.white),
+                            boxShadow: [
+                              BoxShadow(
+                                  spreadRadius: 2,
+                                  blurRadius: 10,
+                                  color: Colors.white.withOpacity(0.1))
+                            ],
+                            shape: BoxShape.circle,
+                            image: DecorationImage(
+                                fit: BoxFit.cover,
+                                image: NetworkImage(
+                                    'https://cdn.pixabay.com/photo/2020/06/16/21/07/bluetooth-5307291_1280.png'))),
+                      ),
+                      Positioned(
+                        bottom: 0,
+                        right: 0,
+                        child: Container(
+                          height: 40,
+                          width: 40,
+                          decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                              border: Border.all(width: 4, color: Colors.white),
+                              color: Colors.blue),
+                          child: Icon(
+                            Icons.edit,
+                            color: Colors.white,
+                          ),
+                        ),
+                      )
+>>>>>>> origin/main
                     ],
                   ),
                 ),
                 SizedBox(height: 10),
+<<<<<<< HEAD
                 // buildTextField("MAC", MacController, mac, false),
                 buildTextField("Tag", TagController, tag, false),
                 const Text("Select an Admin:"),
@@ -133,10 +206,27 @@ class _EditDeviceState extends State<EditDevice> {
                             items:
                                 dbService.allUsers.map((UtilisateurModel item) {
                               return DropdownMenuItem<String>(
+=======
+                buildTextField("MAC", MacController, mac, false),
+                buildTextField("Tag", TagController, tag, false),
+                const Text("Select a User:"),
+                dbService.allUsers.isEmpty
+                    ? const LinearProgressIndicator()
+                    : SizedBox(
+                        width: double.infinity,
+                        child: DropdownButton(
+                        
+                          value: dbService.employeeDepartment ??
+                              dbService.allUsers.first.id,
+                          items: dbService.allUsers
+                              .map((UtilisateurModel item) {
+                            return DropdownMenuItem(
+>>>>>>> origin/main
                                 value: item.id,
                                 child: Text(
                                   item.name,
                                   style: const TextStyle(fontSize: 20),
+<<<<<<< HEAD
                                 ),
                               );
                             }).toList(),
@@ -149,11 +239,25 @@ class _EditDeviceState extends State<EditDevice> {
                       ),
 
                 SizedBox(height: 30),
+=======
+                                ));
+                          }).toList(),
+                          onChanged: (selectedValue) {
+                            dbService.employeeDepartment = selectedValue ;
+                          },
+                        ),
+                      ),
+        
+          
+               
+        SizedBox(height: 30),
+>>>>>>> origin/main
                 Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       OutlinedButton(
                         onPressed: () {
+<<<<<<< HEAD
                           dbService.deleteIntermediar(id, 1, context).then(
                               (value) =>
                                   dbService.deleteDevice(id, context).then((_) {
@@ -166,6 +270,14 @@ class _EditDeviceState extends State<EditDevice> {
                                 fontSize: 15,
                                 letterSpacing: 2,
                                 color: Colors.white)):Text("Delete",
+=======
+                         dbService.updateIntermediare(id,context).then((value) => dbService.deleteDevice(id, context).then((_) {
+                              Navigator.pop(
+                                  context, true); // Pass a signal for refresh
+                            }));
+                        },
+                        child: Text("Delete",
+>>>>>>> origin/main
                             style: TextStyle(
                                 fontSize: 15,
                                 letterSpacing: 2,
@@ -177,6 +289,7 @@ class _EditDeviceState extends State<EditDevice> {
                       ),
                       ElevatedButton(
                         onPressed: () {
+<<<<<<< HEAD
                           // final newMac = MacController.text;
                           final newTag = TagController.text;
 
@@ -184,6 +297,25 @@ class _EditDeviceState extends State<EditDevice> {
                             Navigator.pop(
                                 context, true); // Pass a signal for refresh
                           });
+=======
+                          final newMac = MacController.text;
+                          final newTag = TagController.text;
+
+                          if (newMac.isNotEmpty && newTag.isNotEmpty) {
+                            dbService.updateDevice(
+                                id, newMac, newMac, context).then((_) {
+                              Navigator.pop(
+                                  context, true); // Pass a signal for refresh
+                            });
+                          } else {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(
+                                content: Text(
+                                    "Please fill in both Name and Email fields."),
+                              ),
+                            );
+                          }
+>>>>>>> origin/main
                         },
                         child: Text("SAVE",
                             style: TextStyle(
@@ -223,7 +355,11 @@ Widget buildTextField(String labelText, TextEditingController controller,
             contentPadding: EdgeInsets.only(bottom: 5),
             labelText: labelText,
             floatingLabelBehavior: FloatingLabelBehavior.always,
+<<<<<<< HEAD
             // hintText: placehonder,
+=======
+            hintText: placehonder,
+>>>>>>> origin/main
             hintStyle: TextStyle(
                 fontSize: 16,
                 fontWeight: FontWeight.bold,

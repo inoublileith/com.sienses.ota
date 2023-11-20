@@ -1,11 +1,20 @@
 import 'dart:math';
 
+<<<<<<< HEAD
 import 'package:OTA/models/device_model.dart';
 import 'package:OTA/models/firm_model.dart';
 import 'package:OTA/models/intermdiare_model.dart';
 import 'package:OTA/models/users_model.dart';
 import 'package:OTA/utilis/utilis.dart';
 
+=======
+import 'package:com_sinses_ota/models/device_model.dart';
+import 'package:com_sinses_ota/models/firm_model.dart';
+import 'package:com_sinses_ota/models/intermdiare_model.dart';
+import 'package:com_sinses_ota/models/user_model.dart';
+import 'package:com_sinses_ota/models/users_model.dart';
+import 'package:com_sinses_ota/utilis/utilis.dart';
+>>>>>>> origin/main
 
 import 'package:flutter/material.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
@@ -23,7 +32,11 @@ class DbService extends ChangeNotifier {
   List<FirmModel> allFirms = [];
   List<UtilisateurModel> usersDevice = [];
   String? employeeDepartment;
+<<<<<<< HEAD
     ValueNotifier<String?> userchips = ValueNotifier<String?>(null);
+=======
+  String? UserChips;
+>>>>>>> origin/main
   late GraphQLClient client;
 
   int? role;
@@ -96,15 +109,23 @@ mutation insetNewUser (\$UserEmail : String ,\$UserName: String \$UserId : UUID 
     }
   }
 
+<<<<<<< HEAD
  Future<void> fetchEmployees() async {
     final currentUser = _supabase.auth.currentUser;
     final currentUserId = currentUser?.id;
 
+=======
+  Future<void> fetchEmployees() async {
+>>>>>>> origin/main
     final QueryOptions options = QueryOptions(
       document: gql('''
       {
         usersCollection(
+<<<<<<< HEAD
           first: 100) {
+=======
+          first:100) {
+>>>>>>> origin/main
           edges {
             node {
               id
@@ -112,8 +133,12 @@ mutation insetNewUser (\$UserEmail : String ,\$UserName: String \$UserId : UUID 
               email
               user
               created_at
+<<<<<<< HEAD
               role
               Id_user
+=======
+
+>>>>>>> origin/main
             }
           }
         }
@@ -121,14 +146,19 @@ mutation insetNewUser (\$UserEmail : String ,\$UserName: String \$UserId : UUID 
     '''),
       fetchPolicy: FetchPolicy.networkOnly,
     );
+<<<<<<< HEAD
 
     final QueryResult result = await client.query(options);
 
+=======
+    final QueryResult result = await client.query(options);
+>>>>>>> origin/main
     if (result.hasException) {
       print(result.exception.toString());
     } else {
       final data = result.data?['usersCollection']['edges'] ?? [];
       List<UtilisateurModel> UtilisateurList = [];
+<<<<<<< HEAD
 
       for (var edge in data) {
         final id = edge['node']['Id_user'];
@@ -138,10 +168,15 @@ mutation insetNewUser (\$UserEmail : String ,\$UserName: String \$UserId : UUID 
         }
         final iduser = edge['node']['id'];
 
+=======
+      for (var edge in data) {
+        final id = edge['node']['id'];
+>>>>>>> origin/main
         final name = edge['node']['name'];
         final email = edge['node']['email'];
         final userId = edge['node']['user'];
         final createdAt = edge['node']['created_at'];
+<<<<<<< HEAD
         final role = edge['node']['role'];
 
         UtilisateurModel utilisateur = UtilisateurModel(
@@ -152,6 +187,15 @@ mutation insetNewUser (\$UserEmail : String ,\$UserName: String \$UserId : UUID 
           createdAt: createdAt,
           role: role,
         );
+=======
+
+        UtilisateurModel utilisateur = UtilisateurModel(
+            id: id,
+            name: name,
+            email: email,
+            userID: userId,
+            createdAt: createdAt);
+>>>>>>> origin/main
         UtilisateurList.add(utilisateur);
 
         print(
@@ -163,11 +207,17 @@ mutation insetNewUser (\$UserEmail : String ,\$UserName: String \$UserId : UUID 
       final length = allUsers.length;
       print("allEmployees: $allUsers, Length: $length");
     }
+<<<<<<< HEAD
 
     notifyListeners();
   }
 
 
+=======
+    notifyListeners();
+  }
+
+>>>>>>> origin/main
   Future<void> fetchDevices() async {
     final QueryOptions options = QueryOptions(
       document: gql('''
@@ -196,6 +246,7 @@ mutation insetNewUser (\$UserEmail : String ,\$UserName: String \$UserId : UUID 
       List<DeviceModel> DeviceList = [];
       for (var edge in data) {
         final id = edge['node']['id'];
+<<<<<<< HEAD
         final mac = edge['node']['Mac'] ?? ''; // Add a null check
         final tag = edge['node']['Tag'] ?? ''; // Add a null check
         final createdAt = edge['node']['created_at'];
@@ -210,6 +261,18 @@ mutation insetNewUser (\$UserEmail : String ,\$UserName: String \$UserId : UUID 
         DeviceList.add(device);
 
         print('Employee ID: $id, Mac: $mac, Tag: $tag, createdAt: $createdAt');
+=======
+        final mac = edge['node']['Mac'];
+        final tag = edge['node']['Tag'];
+        final createdAt = edge['node']['created_at'];
+
+        DeviceModel device = DeviceModel(
+            id: id, mac: mac, tag: tag, createdAt: createdAt, idUser: '');
+        DeviceList.add(device);
+        '';
+
+        print('Employee ID: $id, Mac: $mac, Tag: $tag, createdAt : $createdAt');
+>>>>>>> origin/main
       }
 
       allDevices = DeviceList;
@@ -250,6 +313,7 @@ mutation insetNewUser (\$UserEmail : String ,\$UserName: String \$UserId : UUID 
         final id = edge['node']['id'];
         final version = edge['node']['version'];
         final tag = edge['node']['Tag'];
+<<<<<<< HEAD
            final createdAt = edge['node']['created_at'];
         const userID = '';
 
@@ -311,6 +375,10 @@ mutation insetNewUser (\$UserEmail : String ,\$UserName: String \$UserId : UUID 
         final tag = edge['node']['Tag'];
         final createdAt = edge['node']['created_at'];
         const userID = '';
+=======
+        final createdAt = edge['node']['created_at'];
+        const userID = 123;
+>>>>>>> origin/main
 
         FirmModel firm = FirmModel(
             id: id,
@@ -333,6 +401,7 @@ mutation insetNewUser (\$UserEmail : String ,\$UserName: String \$UserId : UUID 
   }
 
   Future<void> updateUser(
+<<<<<<< HEAD
       String id, String name,  BuildContext context) async {
     Map<String, dynamic> variables = {
       'userId': id,
@@ -371,6 +440,38 @@ mutation insetNewUser (\$UserEmail : String ,\$UserName: String \$UserId : UUID 
 
     final QueryResult result = await client.mutate(options);
 
+=======
+      String id, String name, String email, BuildContext context) async {
+    final MutationOptions options = MutationOptions(document: gql("""
+ mutation updateProfile(
+    \$userId:  BigIntFilter!
+    \$newUsername: String!
+    \$newEmail: String!
+    \$newRole : String!
+
+
+  ) {
+    updateUsersCollection(
+      filter: { id: { eq: \$userId } }
+      set: { name: \$newUsername, email: \$newEmail,role: \$newRole}
+    ) {
+      affectedCount
+      records {
+        id
+        name
+        email
+
+      }
+    }
+  }
+"""), fetchPolicy: FetchPolicy.networkOnly, variables: {
+      'userId': id,
+      'newUsername': name,
+      'newEmail': email,
+      'newRole': role.toString(),
+    });
+    final QueryResult result = await client.mutate(options);
+>>>>>>> origin/main
     if (result.hasException) {
       print(result.exception.toString());
     } else {
@@ -380,24 +481,40 @@ mutation insetNewUser (\$UserEmail : String ,\$UserName: String \$UserId : UUID 
   }
 
   Future<void> updateProfil(
+<<<<<<< HEAD
       String name,BuildContext context) async {
+=======
+      String name, String email, BuildContext context) async {
+>>>>>>> origin/main
     final MutationOptions options = MutationOptions(document: gql("""
  mutation updateProfile(
     \$userId:  UUID!
     \$newUsername: String!
+<<<<<<< HEAD
 
+=======
+    \$newEmail: String!
+>>>>>>> origin/main
 
 
   ) {
     updateUsersCollection(
       filter: { Id_user: { eq: \$userId } }
+<<<<<<< HEAD
       set: { name: \$newUsername,}
+=======
+      set: { name: \$newUsername, email: \$newEmail}
+>>>>>>> origin/main
     ) {
       affectedCount
       records {
         id
         name
+<<<<<<< HEAD
     
+=======
+        email
+>>>>>>> origin/main
 
 
       }
@@ -406,7 +523,11 @@ mutation insetNewUser (\$UserEmail : String ,\$UserName: String \$UserId : UUID 
 """), fetchPolicy: FetchPolicy.networkOnly, variables: {
       'userId': _supabase.auth.currentUser!.id,
       'newUsername': name,
+<<<<<<< HEAD
   
+=======
+      'newEmail': email,
+>>>>>>> origin/main
     });
     final QueryResult result = await client.mutate(options);
     if (result.hasException) {
@@ -420,7 +541,11 @@ mutation insetNewUser (\$UserEmail : String ,\$UserName: String \$UserId : UUID 
 
   //
   // delete employee using graphql
+<<<<<<< HEAD
   Future<void> deleteUser(String id,String uuid ,  BuildContext context) async {
+=======
+  Future<void> deleteUser(String id, BuildContext context) async {
+>>>>>>> origin/main
     final MutationOptions options = MutationOptions(document: gql('''
  mutation DeleteEmployee(\$employeeID: UUIDFilter!) {
     deleteFromUsersCollection(atMost: 1, filter: { id: { eq: \$employeeID } }) {
@@ -429,8 +554,11 @@ mutation insetNewUser (\$UserEmail : String ,\$UserName: String \$UserId : UUID 
   }
 '''), fetchPolicy: FetchPolicy.networkOnly, variables: {'employeeID': id});
     final QueryResult result = await client.mutate(options);
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> origin/main
     notifyListeners();
     if (result.hasException) {
       print(result.exception.toString());
@@ -465,7 +593,11 @@ mutation insetNewUser (\$UserEmail : String ,\$UserName: String \$UserId : UUID 
       'userId': id,
       'newVersion': version,
       'newTag': tag,
+<<<<<<< HEAD
       'newUser': userchips
+=======
+      'newUser': UserChips
+>>>>>>> origin/main
     });
     final QueryResult result = await client.mutate(options);
     if (result.hasException) {
@@ -514,10 +646,18 @@ mutation insetNewUser (\$UserEmail : String ,\$UserName: String \$UserId : UUID 
   }
 
   Future<void> updateDevice(
+<<<<<<< HEAD
       String id,String tag, BuildContext context) async {
     final MutationOptions options = MutationOptions(document: gql("""
  mutation updateDevice(
     \$userId:  BigIntFilter!
+=======
+      String id, String mac, String tag, BuildContext context) async {
+    final MutationOptions options = MutationOptions(document: gql("""
+ mutation updateDevice(
+    \$userId:  BigIntFilter!
+    \$newMac: String!
+>>>>>>> origin/main
     \$newTag: String!
     \$newUser: String!
 
@@ -525,11 +665,19 @@ mutation insetNewUser (\$UserEmail : String ,\$UserName: String \$UserId : UUID 
   ) {
     updateDevicesCollection(
       filter: { id: { eq: \$userId } }
+<<<<<<< HEAD
       set: { Tag: \$newTag,Id_user:\$newUser}
+=======
+      set: { Mac: \$newMac, Tag: \$newTag,Id_user:\$newUser}
+>>>>>>> origin/main
     ) {
       affectedCount
       records {
         id
+<<<<<<< HEAD
+=======
+        Mac
+>>>>>>> origin/main
         Tag
         Id_user
 
@@ -538,7 +686,12 @@ mutation insetNewUser (\$UserEmail : String ,\$UserName: String \$UserId : UUID 
   }
 """), fetchPolicy: FetchPolicy.networkOnly, variables: {
       'userId': id,
+<<<<<<< HEAD
         'newTag': tag,
+=======
+      'newMac': mac,
+      'newTag': tag,
+>>>>>>> origin/main
       'newUser': employeeDepartment
     });
     final QueryResult result = await client.mutate(options);
@@ -572,7 +725,11 @@ mutation insetNewUser (\$UserEmail : String ,\$UserName: String \$UserId : UUID 
   }
 
   Future<void> getAllusers() async {
+<<<<<<< HEAD
     final List result = await _supabase.from("Users").select();
+=======
+    final List result = await _supabase.from("users").select();
+>>>>>>> origin/main
     usersDevice = result
         .map((department) => UtilisateurModel.fromJson(department))
         .toList();
@@ -582,7 +739,11 @@ mutation insetNewUser (\$UserEmail : String ,\$UserName: String \$UserId : UUID 
   Future<String> isAdmin() async {
     if (_supabase.auth.currentUser == null) {
       // Handle the case where the user is not authenticated
+<<<<<<< HEAD
       return "3"; // Or any appropriate value for non-admin
+=======
+      return "1"; // Or any appropriate value for non-admin
+>>>>>>> origin/main
     }
 
     final QueryOptions options = QueryOptions(document: gql('''
@@ -607,13 +768,21 @@ mutation insetNewUser (\$UserEmail : String ,\$UserName: String \$UserId : UUID 
     if (result.hasException) {
       print(result.exception.toString());
       // Return 0 in case of an exception
+<<<<<<< HEAD
       return "3"; // Or any appropriate value for non-admin
+=======
+      return "1"; // Or any appropriate value for non-admin
+>>>>>>> origin/main
     } else {
       final data = result.data?['usersCollection']['edges'] ?? [];
 
       if (data.isEmpty) {
         // Return 0 if no user data is found (non-admin)
+<<<<<<< HEAD
         return "3"; // Or any appropriate value for non-admin
+=======
+        return "1"; // Or any appropriate value for non-admin
+>>>>>>> origin/main
       }
 
       final edge = data[0];
@@ -635,7 +804,11 @@ mutation insetNewUser (\$UserEmail : String ,\$UserName: String \$UserId : UUID 
     } else if (admin == "3") {
       return "3";
     } else {
+<<<<<<< HEAD
       return "0";
+=======
+      return "1";
+>>>>>>> origin/main
     }
   }
 
@@ -682,8 +855,13 @@ mutation insetNewUser (\$UserEmail : String ,\$UserName: String \$UserId : UUID 
           for (var edge in intermidaryCollection) {
             final firmwareData = edge['node']['firmware'];
             final version = firmwareData['version'];
+<<<<<<< HEAD
 
             final createdat = DateTime.parse(firmwareData['created_at']);
+=======
+            final createdat = firmwareData['created_at'];
+
+>>>>>>> origin/main
             final interModel = IntermModel(
               id: 3, // Set 'id' to a default value if it's not present in the response.
               version: version,
@@ -767,8 +945,11 @@ mutation insetNewUser (\$UserEmail : String ,\$UserName: String \$UserId : UUID 
               name
               email
               created_at
+<<<<<<< HEAD
               role
               user
+=======
+>>>>>>> origin/main
            
             }
           }
@@ -787,13 +968,21 @@ mutation insetNewUser (\$UserEmail : String ,\$UserName: String \$UserId : UUID 
       print(result.exception.toString());
       // Handle the exception here if needed
       return UtilisateurModel(
+<<<<<<< HEAD
           createdAt: '', id: '', email: '', name: '', userID: '', role : '');
+=======
+          createdAt: '', id: '', email: '', name: '', userID: '');
+>>>>>>> origin/main
     } else {
       final data = result.data?['usersCollection']['edges'] ?? [];
 
       if (data.isEmpty) {
         return UtilisateurModel(
+<<<<<<< HEAD
             createdAt: '', id: '', email: '', name: '', userID: '',role : '');
+=======
+            createdAt: '', id: '', email: '', name: '', userID: '');
+>>>>>>> origin/main
       }
 
       final edge = data[0];
@@ -802,19 +991,27 @@ mutation insetNewUser (\$UserEmail : String ,\$UserName: String \$UserId : UUID 
       final name = edge['node']['name'];
       final email = edge['node']['email'];
       final createdAt = edge['node']['created_at'];
+<<<<<<< HEAD
       final role = edge['node']['role'];
+=======
+>>>>>>> origin/main
       UtilisateurModel userModel = UtilisateurModel(
           id: id,
           email: email,
           name: name,
           userID: _supabase.auth.currentUser!.id,
+<<<<<<< HEAD
           createdAt: createdAt,
           role : role );
+=======
+          createdAt: createdAt);
+>>>>>>> origin/main
       print('$id, leith : $name,$email,');
       return userModel;
     }
   }
 
+<<<<<<< HEAD
 //   Future<void> updateIntermediare(String id, BuildContext context) async {
 //     final MutationOptions options = MutationOptions(document: gql("""
 //  mutation updateFirm(
@@ -852,6 +1049,32 @@ mutation insetNewUser (\$UserEmail : String ,\$UserName: String \$UserId : UUID 
       await _supabase.from('intermidary').delete().eq('device', id).execute();
     } else {
       await _supabase.from('intermidary').delete().eq('firms', id).execute();
+=======
+  Future<void> updateIntermediare(String id, BuildContext context) async {
+    final MutationOptions options = MutationOptions(document: gql("""
+ mutation updateFirm(
+    \$newDevice:  String!
+
+
+  ) {
+    updateintermidaryCollection(
+      filter: { device: { eq: \$newDevice } }
+      set: { device: null}
+    ) {
+      affectedCount
+  
+    }
+  }
+"""), fetchPolicy: FetchPolicy.networkOnly, variables: {
+      'newDevice': id,
+    });
+    final QueryResult result = await client.mutate(options);
+    if (result.hasException) {
+      print(result.exception.toString());
+    } else {
+      print('FirmWare modified');
+      Utils.showSnackBar("Successfully modify !", context, color: Colors.green);
+>>>>>>> origin/main
     }
   }
 
@@ -959,6 +1182,7 @@ mutation insetNewUser (\$UserEmail : String ,\$UserName: String \$UserId : UUID 
         .eq('Id_user', intNumber)
         .execute();
   }
+<<<<<<< HEAD
 
   Future<void> createFirmsDevices(
       List<String> deviceIds, String firmId, BuildContext context) async {
@@ -994,4 +1218,6 @@ Future<bool> isDeviceInCloud(String deviceMac) async {
     }
   }
 
+=======
+>>>>>>> origin/main
 }

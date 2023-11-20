@@ -1,5 +1,10 @@
+<<<<<<< HEAD
 import 'package:OTA/services/auth_service.dart';
 import 'package:OTA/utilis/utilis.dart';
+=======
+import 'package:com_sinses_ota/services/auth_service.dart';
+import 'package:com_sinses_ota/utilis/utilis.dart';
+>>>>>>> origin/main
 
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -18,6 +23,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
 
   @override
   Widget build(BuildContext context) {
+<<<<<<< HEAD
      Brightness brightness = MediaQuery.of(context).platformBrightness;
     bool isDarkMode = brightness == Brightness.dark;
     double screenWidth = MediaQuery.of(context).size.width;
@@ -25,21 +31,41 @@ class _RegisterScreenState extends State<RegisterScreen> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Color.fromARGB(225, 152, 36, 36),
+=======
+    double screenWidth = MediaQuery.of(context).size.width;
+    double screenHeight = MediaQuery.of(context).size.height;
+    final Map<String, dynamic> attendanceFilter = {
+      // Define your filter criteria here, for example:
+      'id': {'_eq': 123}, // Delete the attendance record with ID 123.
+    };
+    const int atMost = 3;
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.indigo,
+>>>>>>> origin/main
         elevation: 0,
       ),
       resizeToAvoidBottomInset: false,
       body: Column(
         children: [
           Container(
+<<<<<<< HEAD
             height: screenHeight / 3,
             width: screenWidth,
             decoration: const BoxDecoration(
                 color: Color.fromARGB(225, 152, 36, 36),
+=======
+            height: screenHeight / 4,
+            width: screenWidth,
+            decoration: const BoxDecoration(
+                color: Colors.indigo,
+>>>>>>> origin/main
                 borderRadius:
                     BorderRadius.only(bottomRight: Radius.circular(70))),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
+<<<<<<< HEAD
                 // Text(
                 //   "OTA",
                 //   style: TextStyle(color: Colors.black, fontSize: 18),
@@ -50,6 +76,13 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   height: 200,
                 ),
                 
+=======
+                Image.asset(
+                  'assets/logo.jpg',
+                  width: 80,
+                  height: 80,
+                ),
+>>>>>>> origin/main
                 SizedBox(
                   height: 20,
                 ),
@@ -66,7 +99,11 @@ class _RegisterScreenState extends State<RegisterScreen> {
               children: [
                 TextField(
                   decoration: const InputDecoration(
+<<<<<<< HEAD
                     label: Text("User Email ID"),
+=======
+                    label: Text("Employee Email ID"),
+>>>>>>> origin/main
                     prefixIcon: Icon(Icons.person),
                     border: OutlineInputBorder(),
                   ),
@@ -126,6 +163,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                 }
                               },
                               style: ElevatedButton.styleFrom(
+<<<<<<< HEAD
                                   backgroundColor: Color.fromARGB(225, 152, 36, 36),
                                   shape: RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(30))),
@@ -145,6 +183,19 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             )
                     ));
                                     },
+=======
+                                  // backgroundColor: Colors.indigo,
+                                  shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(30))),
+                              child: const Text(
+                                "REGISTER",
+                                style: TextStyle(
+                                    fontSize: 20, color: Colors.indigo),
+                              ),
+                            ),
+                    );
+                  },
+>>>>>>> origin/main
                 ),
               ],
             ),

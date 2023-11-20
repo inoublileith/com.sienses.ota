@@ -21,6 +21,7 @@ enum ColorSelectionMethod {
 }
 
 enum ColorSeed {
+<<<<<<< HEAD
   baseColor(
     'Indigo',
     Color.fromARGB(225, 152, 36, 36),
@@ -54,6 +55,17 @@ enum ColorSeed {
     Color.fromARGB(225, 152, 36, 36),
   ),
   pink('Pink', Color.fromARGB(225, 152, 36, 36));
+=======
+  baseColor('Indigo', Colors.indigo),
+  indigo('Indigo', Colors.indigo),
+  blue('Blue', Colors.blue),
+  teal('Teal', Colors.teal),
+  green('Green', Colors.green),
+  yellow('Yellow', Colors.yellow),
+  orange('Orange', Colors.orange),
+  deepOrange('Deep Orange', Colors.deepOrange),
+  pink('Pink', Colors.pink);
+>>>>>>> origin/main
 
   const ColorSeed(this.label, this.color);
   final String label;
@@ -92,3 +104,8 @@ enum ScreenSelected {
   const ScreenSelected(this.value);
   final int value;
 }
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> origin/main

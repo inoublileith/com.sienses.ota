@@ -1,13 +1,31 @@
+<<<<<<< HEAD
 import 'package:OTA/screens/super_admin/device/edit_device.dart';
 import 'package:OTA/services/DbService.dart';
+=======
+import 'package:com_sinses_ota/models/device_model.dart';
+import 'package:com_sinses_ota/models/users_model.dart';
+import 'package:com_sinses_ota/screens/homeScreen.dart';
+import 'package:com_sinses_ota/screens/super_admin/user/Edit_User.dart';
+import 'package:com_sinses_ota/screens/super_admin/device/edit_device.dart';
+import 'package:com_sinses_ota/services/DbService.dart';
+>>>>>>> origin/main
 
 import 'package:flutter/material.dart';
 import 'package:flutter_blue_plus/flutter_blue_plus.dart';
 import 'package:provider/provider.dart';
 
+<<<<<<< HEAD
 const double narrowScreenWidthThreshold = 100;
 
 // ... (your existing imports)
+=======
+const Widget divider = SizedBox(height: 10);
+
+// If screen content width is greater or equal to this value, the light and dark
+// color schemes will be displayed in a column. Otherwise, they will
+// be displayed in a row.
+const double narrowScreenWidthThreshold = 100;
+>>>>>>> origin/main
 
 class DeviceScreen extends StatefulWidget {
   const DeviceScreen({Key? key}) : super(key: key);
@@ -18,22 +36,37 @@ class DeviceScreen extends StatefulWidget {
 
 class _DeviceScreenState extends State<DeviceScreen> {
   final TextEditingController tagController = TextEditingController();
+<<<<<<< HEAD
   String? tagValue;
   bool isFilterActive = false;
 
   List<String> selectedDeviceIds = []; // Store selected device IDs
+=======
+  List<DeviceModel> filteredDeviceList = [];
+  List<UtilisateurModel> ListUsers = [] ;// Initialize a filtered list
+  String? tagValue;
+>>>>>>> origin/main
 
   @override
   void initState() {
     super.initState();
+<<<<<<< HEAD
     final dbService = Provider.of<DbService>(context, listen: false);
     dbService.fetchDevices(); // Fetch all devices when the screen initializes.
+=======
+    // Call the function to fetch device data from the database when the screen is initialized
+    Provider.of<DbService>(context, listen: false).fetchDevices();
+     Provider.of<DbService>(context, listen: false).fetchEmployees();
+>>>>>>> origin/main
   }
 
   @override
   Widget build(BuildContext context) {
+<<<<<<< HEAD
     final dbService = Provider.of<DbService>(context);
 
+=======
+>>>>>>> origin/main
     return Expanded(
       child: LayoutBuilder(
         builder: (context, constraints) {
@@ -65,6 +98,7 @@ class _DeviceScreenState extends State<DeviceScreen> {
                   ),
                 ),
                 Row(
+<<<<<<< HEAD
   children: [
     Expanded(
       child: Container(
@@ -236,12 +270,35 @@ class _DeviceScreenState extends State<DeviceScreen> {
                         }
                       },
                       child: const Text('Add Firms'),
+=======
+                  children: [
+                    Expanded(
+                      child: TextField(
+                        controller: tagController,
+                        decoration: InputDecoration(
+                          labelText: 'Tag',
+                          hintText: 'Enter a tag',
+                        ),
+                      ),
+                    ),
+                    SizedBox(width: 8),
+                    ElevatedButton(
+                      onPressed: () {
+                        setState(() {
+                          tagValue = tagController.text;
+                          dbService.fetchDevicesByTag(
+                              tagValue!); // Call the filter function when the button is pressed
+                        });
+                      },
+                      child: const Icon(Icons.search, color: Colors.blue),
+>>>>>>> origin/main
                     ),
                   ],
                 ),
                 Expanded(
                   child: Consumer<DbService>(
                     builder: (context, dbService, child) {
+<<<<<<< HEAD
                       final deviceList = isFilterActive
                           ? dbService.allDevices
                               .where((device) => device.tag
@@ -250,6 +307,17 @@ class _DeviceScreenState extends State<DeviceScreen> {
                               .toList()
                           : dbService.allDevices;
 
+=======
+                     final deviceList =
+                          tagValue != null && tagValue!.isNotEmpty
+                              ? dbService.allDevices
+                                  .where((device) => device.tag
+                                      .toLowerCase()
+                                      .contains(tagValue!.toLowerCase()))
+                                  .toList()
+                              : dbService.allDevices;
+                      final ListUsers = dbService.allUsers;
+>>>>>>> origin/main
                       return ListView.builder(
                         scrollDirection: Axis.vertical,
                         shrinkWrap: true,
@@ -307,6 +375,7 @@ class _DeviceScreenState extends State<DeviceScreen> {
                                     ),
                                   ],
                                 ),
+<<<<<<< HEAD
                                 trailing: IconButton(
                                   icon: device.isSelected
                                       ? Icon(Icons.check_box)
@@ -322,6 +391,12 @@ class _DeviceScreenState extends State<DeviceScreen> {
                                       }
                                     });
                                   },
+=======
+                                trailing: const Icon(
+                                  Icons.keyboard_arrow_right,
+                                  color: Colors.white,
+                                  size: 30.0,
+>>>>>>> origin/main
                                 ),
                                 onTap: () {
                                   Navigator.push(
@@ -332,6 +407,12 @@ class _DeviceScreenState extends State<DeviceScreen> {
                                     ),
                                   ).then((refresh) {
                                     if (refresh == true) {
+<<<<<<< HEAD
+=======
+                                      // Reload the list of firmware (you can do this by fetching data again or using some other method)
+                                      // You can call a function to fetch updated data here or use a state management approach to refresh the list.
+                                      // For example, if you are using Provider, you can notify your Provider to rebuild.
+>>>>>>> origin/main
                                       Provider.of<DbService>(context,
                                               listen: false)
                                           .fetchDevices();
@@ -345,7 +426,11 @@ class _DeviceScreenState extends State<DeviceScreen> {
                       );
                     },
                   ),
+<<<<<<< HEAD
                 ),
+=======
+                )
+>>>>>>> origin/main
               ],
             );
           }

@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 import 'package:OTA/screens/components/NavigationDrawer/MailDestination.dart';
+=======
+import 'package:com_sinses_ota/screens/components/NavigationDrawer/MailDestination.dart';
+>>>>>>> origin/main
 import 'package:flutter/material.dart';
 
 class NavigationRailSection extends StatefulWidget {

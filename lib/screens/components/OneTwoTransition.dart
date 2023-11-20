@@ -1,8 +1,13 @@
 
 
 
+<<<<<<< HEAD
 import 'package:OTA/constant.dart';
 import 'package:OTA/screens/components/constant.dart';
+=======
+import 'package:com_sinses_ota/constant.dart';
+import 'package:com_sinses_ota/screens/components/constant.dart';
+>>>>>>> origin/main
 import 'package:flutter/material.dart';
 
 class OneTwoTransition extends StatefulWidget {

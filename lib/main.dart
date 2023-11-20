@@ -1,13 +1,26 @@
+<<<<<<< HEAD
 import 'package:OTA/constant.dart';
 import 'package:OTA/screens/splach_screen.dart';
 import 'package:OTA/services/DbService.dart';
 import 'package:OTA/services/auth_service.dart';
+=======
+import 'package:com_sinses_ota/constant.dart';
+import 'package:com_sinses_ota/screens/splach_screen.dart';
+import 'package:com_sinses_ota/services/DbService.dart';
+import 'package:com_sinses_ota/services/auth_service.dart';
+
+>>>>>>> origin/main
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 import 'package:provider/provider.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> origin/main
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
@@ -84,6 +97,11 @@ class _AppState extends State<App> {
       providers: [
         ChangeNotifierProvider(create: (context) => AuthService()),
         ChangeNotifierProvider(create: (context) => DbService()),
+<<<<<<< HEAD
+=======
+        
+
+>>>>>>> origin/main
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,

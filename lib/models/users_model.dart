@@ -4,6 +4,7 @@ class UtilisateurModel {
   final String email;
   final String userID;
   final String createdAt;
+<<<<<<< HEAD
   final String role ; 
 
   UtilisateurModel(
@@ -17,6 +18,15 @@ class UtilisateurModel {
       required this.createdAt
       
       });
+=======
+
+  UtilisateurModel(
+      {required this.id,
+      required this.name,
+      required this.email,
+      required this.userID,
+      required this.createdAt});
+>>>>>>> origin/main
 
   // GraphQL serialization
   Map<String, dynamic> toJson() {
@@ -33,7 +43,10 @@ class UtilisateurModel {
   factory UtilisateurModel.fromJson(Map<String, dynamic> data) {
     return UtilisateurModel(
         id: data['id'],
+<<<<<<< HEAD
         role : data ['role'],
+=======
+>>>>>>> origin/main
         name: data['name'],
         email: data['email'],
         userID: data['user'],

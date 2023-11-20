@@ -1,8 +1,19 @@
 
+<<<<<<< HEAD
 import 'package:OTA/constant.dart';
 import 'package:OTA/screens/homeScreen.dart';
 import 'package:OTA/screens/login_screen.dart';
 import 'package:OTA/services/auth_service.dart';
+=======
+import 'package:com_sinses_ota/constant.dart';
+import 'package:com_sinses_ota/screens/auth/login_page.dart';
+import 'package:com_sinses_ota/screens/homeScreen.dart';
+import 'package:com_sinses_ota/screens/login_screen.dart';
+// import 'package:com_sinses_ota/screens/login_screen.dart';
+
+
+import 'package:com_sinses_ota/services/auth_service.dart';
+>>>>>>> origin/main
 import 'package:flutter/material.dart';
 import 'package:flutter_blue_plus/flutter_blue_plus.dart';
 import 'package:provider/provider.dart';
